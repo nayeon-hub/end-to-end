@@ -2,6 +2,7 @@ const textDiv = document.querySelector(".text-submit");
 const textForm = textDiv.querySelector("form");
 const textInput = textForm.querySelector("input");
 const gameResult = document.querySelector(".game-result");
+let nextAttack = "";
 
 function checkDic(value) {
   fetch(
@@ -21,6 +22,8 @@ function checkDic(value) {
         gameResult.innerHTML = "GoGo!";
         console.log(xmlDoc.getElementsByTagName("word")[0].innerHTML);
         console.log(xmlDoc.getElementsByTagName("definition")[0].innerHTML);
+        localStorage.setItem("")
+        return value.slice(-1);
       }
     });
 }
@@ -29,5 +32,5 @@ textForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const userAns = textInput.value;
   textInput.value = "";
-  checkDic(userAns);
+  nextAttack = checkDic(userAns);
 });
